@@ -1,0 +1,9 @@
+{
+    "markdown.marp.themes": [
+        "https://raw.githubusercontent.com/barafael/marp-theme-rhea/main/rhea.css"
+    ],
+    "plantuml.diagramsRoot": "./assets/",
+    "plantuml.exportFormat": "png",
+    "plantuml.exportOutDir": "./assets/",
+    "plantuml.exportSubFolder": false
+}

@@ -1,0 +1,30 @@
+@startuml door
+!define BG fff5e3
+!define TEXT 333
+
+skinparam {
+    ArrowColor #TEXT
+    BackgroundColor #BG
+    DefaultFontColor #TEXT
+    DefaultFontName Roboto
+    DefaultFontSize 22
+}
+
+skinparam state {
+    BorderThickness 2
+}
+
+left to right direction
+hide empty description
+
+state Door {
+    state Open : look_through()
+    state Closed : knock()
+}
+
+[*] --> Open
+
+Open --> Closed
+Closed --> Open
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml rule-validation
+!define BG fff5e3
+!define TEXT 333
+
+skinparam {
+    ArrowColor #TEXT
+    BackgroundColor #BG
+    DefaultFontColor #TEXT
+    DefaultFontName Roboto
+    DefaultFontSize 22
+}
+
+skinparam state {
+    BorderThickness 2
+}
+
+hide empty description
+
+[*] -> RuleSet : deserialize()
+RuleSet --> ResolvedRule
+ResolvedRule --> ValidatedRule
+ValidatedRule --> ActiveRule
+ActiveRule -> [*]
+
+@enduml

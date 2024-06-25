@@ -1,0 +1,38 @@
+@startuml config-builder
+!define BG fff5e3
+!define TEXT 333
+
+skinparam {
+    ArrowColor #TEXT
+    BackgroundColor #BG
+    DefaultFontColor #TEXT
+    DefaultFontName Roboto
+    DefaultFontSize 22
+}
+
+skinparam state {
+    BorderThickness 2
+}
+
+left to right direction
+hide empty description
+
+state ServerConfig
+state ClientConfig
+
+state "ConfigBuilder<Side, State>" as ConfigBuilder {
+    WantsVersion --> WantsVerifier
+    WantsVerifier --> WantsServerCert : Side=ServerConfig
+    WantsVerifier --> WantsClientCert : Side=ClientConfig
+    WantsServerCert --> ServerConfig
+    WantsClientCert --> ClientConfig
+}
+
+[*] --> WantsVersion
+
+ServerConfig -[hidden]> ClientConfig
+
+WantsVerifier --> DangerousClientConfigBuilder
+DangerousClientConfigBuilder -> WantsClientCert
+
+@enduml
